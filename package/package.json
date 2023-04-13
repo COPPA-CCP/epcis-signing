@@ -1,0 +1,36 @@
+{
+  "name": "epcis-signing",
+  "version": "0.0.1",
+  "description": "Signing of EPCIS events in form of verifiable credentials for tracability and immutability",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config jestconfig.json",
+    "prepare": "npm run build"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/COPPA-CCP/epcis-signing.git"
+  },
+  "keywords": [
+    "epcis",
+    "epcis2.0",
+    "ssi",
+    "credential"
+  ],
+  "author": "Christian Fries (EECC)",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/COPPA-CCP/epcis-signing/issues"
+  },
+  "homepage": "https://github.com/COPPA-CCP/epcis-signing#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
+  }
+}
