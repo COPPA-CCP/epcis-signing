@@ -4,8 +4,12 @@ import {
     VerifiableCredential
 } from './types';
 
-export async function signEPCIS(event: EPCISDocument | EPCISEvent): Promise<VerifiableCredential> {
-    return {} as VerifiableCredential;
+import { signEPCIS } from './signing';
+
+export async function sign(issuer: string, event: EPCISDocument | EPCISEvent, keyPair: any): Promise<VerifiableCredential> {
+
+    return await signEPCIS(issuer, event, keyPair);
+
 };
 
 export type * from './types';

@@ -8,7 +8,7 @@
 export type EPCISDocument = {
     creationDate: String;
     epcisBody: EPCISBody;
-    id: String;
+    id: string | URL;
     schemaVersion: String;
     type: String;
 }
@@ -20,6 +20,7 @@ export type EPCISEvent = {
     epcList: String[];
     eventTime: String;
     eventTimeZoneOffset: String;
+    id: string | URL;
     readPoint: ReadPoint;
     type: String;
 }
@@ -45,16 +46,13 @@ export type Proof = {
 export type Verifiable = {
     '@context': (string | any)[];
     type: string[];
-    proof: Proof | Proof[];
+    proof?: Proof | Proof[];
 }
 
-export type CredentialSubject = {
-    id: string | URL;
-}
 
 export type VerifiableCredential = Verifiable & {
-    id: URL;
+    id: string | URL;
     issuer: string | any;
     issuanceDate: string;
-    credentialSubject: CredentialSubject;
+    credentialSubject: EPCISDocument | EPCISEvent;
 }
