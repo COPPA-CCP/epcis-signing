@@ -2,9 +2,10 @@
   "name": "epcis-signing",
   "version": "0.0.1",
   "description": "Signing of EPCIS events in form of verifiable credentials for tracability and immutability",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json  && cp src/types.d.ts lib/",
     "test": "jest --config jestconfig.json",
     "prepare": "npm run build"
   },

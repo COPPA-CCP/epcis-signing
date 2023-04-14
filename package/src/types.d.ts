@@ -5,7 +5,7 @@
  * EPCIS 2.0 types 
  */
 
-type EPCISDocument = {
+export type EPCISDocument = {
     creationDate: String;
     epcisBody: EPCISBody;
     id: String;
@@ -13,7 +13,7 @@ type EPCISDocument = {
     type: String;
 }
 
-type EPCISEvent = {
+export type EPCISEvent = {
     action: String;
     bizStep: String;
     disposition: String;
@@ -24,11 +24,11 @@ type EPCISEvent = {
     type: String;
 }
 
-type EPCISBody = {
+export type EPCISBody = {
     eventList: EPCISEvent[];
 }
 
-type ReadPoint = {
+export type ReadPoint = {
     id: String;
 }
 
@@ -37,22 +37,22 @@ type ReadPoint = {
  * Verifiable credential types
  */
 
-type Proof = {
+export type Proof = {
     type: string;
     challenge: string | undefined;
 }
 
-type Verifiable = {
+export type Verifiable = {
     '@context': (string | any)[];
     type: string[];
     proof: Proof | Proof[];
 }
 
-type CredentialSubject = {
+export type CredentialSubject = {
     id: string | URL;
 }
 
-type VerifiableCredential = Verifiable & {
+export type VerifiableCredential = Verifiable & {
     id: URL;
     issuer: string | any;
     issuanceDate: string;
