@@ -1,7 +1,7 @@
 // @ts-ignore
 import jsonldSignatures from 'jsonld-signatures';
 
-import { contexts } from './contexts';
+import { contexts } from './contexts/index';
 
 
 export const documentLoader: Promise<any> = jsonldSignatures.extendContextLoader(async (url: string) => {
