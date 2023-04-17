@@ -4,7 +4,7 @@ import {
     VerifiableCredential
 } from './types';
 
-import { signEPCIS } from './signing';
+import { signEPCIS } from './signing/index';
 
 export async function sign(issuer: string, event: EPCISDocument | EPCISEvent, keyPair: any): Promise<VerifiableCredential> {
 

@@ -6,6 +6,7 @@
  */
 
 export type EPCISDocument = {
+    '@context'?: String[],
     creationDate: String;
     epcisBody: EPCISBody;
     id: string | URL;
@@ -14,6 +15,7 @@ export type EPCISDocument = {
 }
 
 export type EPCISEvent = {
+    '@context'?: String[],
     action: String;
     bizStep: String;
     disposition: String;
@@ -40,7 +42,11 @@ export type ReadPoint = {
 
 export type Proof = {
     type: string;
-    challenge: string | undefined;
+    challenge?: string | undefined;
+    created: Date | string;
+    verificationMethod: string;
+    proofPurpose: string;
+    proofValue: string;
 }
 
 export type Verifiable = {
