@@ -6,25 +6,25 @@
  */
 
 export type EPCISDocument = {
-    '@context'?: String[],
-    creationDate: String;
+    '@context'?: string[],
+    creationDate: string;
     epcisBody: EPCISBody;
-    id: string | URL;
-    schemaVersion: String;
-    type: String;
+    id: string;
+    schemaVersion: string;
+    type: string;
 }
 
 export type EPCISEvent = {
-    '@context'?: String[],
-    action: String;
-    bizStep: String;
-    disposition: String;
-    epcList: String[];
-    eventTime: String;
-    eventTimeZoneOffset: String;
-    id: string | URL;
+    '@context'?: string[],
+    action: string;
+    bizStep: string;
+    disposition: string;
+    epcList: string[];
+    eventTime: string;
+    eventTimeZoneOffset: string;
+    id: string;
     readPoint: ReadPoint;
-    type: String;
+    type: string;
 }
 
 export type EPCISBody = {
@@ -32,7 +32,7 @@ export type EPCISBody = {
 }
 
 export type ReadPoint = {
-    id: String;
+    id: string;
 }
 
 

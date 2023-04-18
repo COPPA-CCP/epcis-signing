@@ -7,6 +7,8 @@ import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-
 
 import { documentLoader } from './documentLoader';
 
+import { isURL } from '../../utils/index';
+
 import {
     EPCISDocument,
     EPCISEvent,
@@ -24,7 +26,9 @@ export function w3cDate(): string {
     return dateStr.substr(0, dateStr.length - 5) + 'Z';
 };
 
-function createEPCISCredential(issuer: string, subject: EPCISDocument | EPCISEvent, credentialId: string | URL): VerifiableCredential {
+function createEPCISCredential(issuer: string, subject: EPCISDocument | EPCISEvent, credentialId: string): VerifiableCredential {
+
+    if (!isURL(credentialId)) throw new Error('Credential id must be an URL');
 
     return {
         '@context': [
