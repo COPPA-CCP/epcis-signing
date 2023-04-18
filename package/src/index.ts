@@ -9,9 +9,9 @@ import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-
 
 import { signEPCIS } from './signing/index';
 
-export async function sign(event: EPCISDocument | EPCISEvent, keyPair: Ed25519VerificationKey2020): Promise<VerifiableCredential> {
+export async function sign(event: EPCISDocument | EPCISEvent, keyPair: Ed25519VerificationKey2020, credentialId?: string): Promise<VerifiableCredential> {
 
-    return await signEPCIS(event, keyPair);
+    return await signEPCIS(event, keyPair, credentialId);
 
 };
 

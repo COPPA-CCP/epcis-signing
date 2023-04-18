@@ -52,9 +52,12 @@ function getSuite(keyPair: any) {
 
 }
 
-export async function signJSONLD(subject: EPCISDocument | EPCISEvent, keyPair: Ed25519VerificationKey2020): Promise<VerifiableCredential> {
+export async function signJSONLD(subject: EPCISDocument | EPCISEvent, keyPair: Ed25519VerificationKey2020, credentialId?: string): Promise<VerifiableCredential> {
 
-    const credential = createEPCISCredential(keyPair.controller, subject, 'https://test.com/vc/1');
+    // make LD specific checks
+    if (!credentialId) throw new Error('For signing an JSON-Ld credential, a unique credential id is needed!')
+
+    const credential = createEPCISCredential(keyPair.controller, subject, credentialId);
 
     const suite = getSuite(keyPair);
 
