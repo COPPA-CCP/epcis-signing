@@ -1,5 +1,6 @@
 
-import { eventDocument, signedEventDocument } from './events/document';
+import { epcisDocument } from './events/document';
+import { epcisEvent } from './events/event';
 import chai, { expect } from "chai";
 chai.should();
 
@@ -26,19 +27,39 @@ async function getKeyPair(): Promise<Ed25519VerificationKey2020> {
 }
 
 describe("Signing Test", () => {
+
     it("Sign EPCIS Document", async () => {
 
         // get seeded keyPair
         const keyPair = await getKeyPair();
 
         // sign the test document with the seeded key
-        const signedCredential = await sign(eventDocument, keyPair);
+        const signedDocument = await sign(epcisDocument, keyPair);
 
-        expect(signedCredential).to.have.property('proof');
-        expect(signedCredential).to.have.property('credentialSubject')
+        expect(signedDocument).to.have.property('proof')
+            .which.has.property('proofValue');
+        expect(signedDocument).to.have.property('credentialSubject')
             .which.has.property('type')
             .which.equal('EPCISDocument');
+
     });
+
+    it("Sign EPCIS Event", async () => {
+
+        // get seeded keyPair
+        const keyPair = await getKeyPair();
+
+        // sign the test document with the seeded key
+        const signedEvent = await sign(epcisEvent, keyPair);
+
+        expect(signedEvent).to.have.property('proof')
+            .which.has.property('proofValue');
+        expect(signedEvent).to.have.property('credentialSubject')
+            .which.has.property('type')
+            .which.equal('ObjectEvent');
+
+    });
+
 });
 
 
