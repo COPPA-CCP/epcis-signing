@@ -1,3 +1,5 @@
+[![Tests](https://github.com/COPPA-CCP/epcis-signing/actions/workflows/npm-test.yml/badge.svg)](https://github.com/COPPA-CCP/epcis-signing/actions)
+
 
 # EPCIS Signing
 
