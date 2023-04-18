@@ -47,71 +47,7 @@ Allowing data to flow between arbitrary parties wilkl result in the need disclos
 
 This data model is based upon the [W3C VC Data Model](https://www.w3.org/TR/vc-data-model/)
 
-
-1. Option
-    verifiableCredential.credentialSubject.document is a EpcisDOcument
-    - credentialSubject.id = EpcisDocument.id
-    - credebtialSubject.id = product identity
-
-```json
-{
-    "@context": [
-        "https://www.w3.org/2018/credentials/v1",
-        "https://ssi.eecc.de/api/registry/context/epcisdocument",
-        "https://w3id.org/security/suites/ed25519-2020/v1"
-    ],
-    "id": "https://ssi.eecc.de/api/registry/vc/d9c23bc4-8fbf-47b5-b697-00eeb3ce2998",
-    "type": [
-        "VerifiableCredential",
-        "EPCISDocumentCredential"
-    ],
-    "issuer": {
-        "id": "did:web:ssi.eecc.de",
-        "image": "https://id.eecc.de/assets/img/logo_big.png",
-        "name": "EECC"
-    },
-    "issuanceDate": "2023-02-07T14:20:02Z",
-    "credentialSubject": {
-        // subjectId can be document id or product id (GTIN/LGTIN etc.)
-        "id": "https://id.gs1.de/01/04012345999990/21/XYZ-1234",
-        "document": {
-            "@context": [
-                "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"
-            ],
-            "type": "EPCISDocument",
-            "schemaVersion": "2.0",
-            "creationDate": "2023-02-07T11:05:00.0Z",
-            "epcisBody": {
-                "eventList": [
-                    {
-                        "type": "ObjectEvent",
-                        "eventTime": "2023-02-07T11:04:03.15Z",
-                        "eventTimeZoneOffset": "+01:00",
-                        "epcList": [
-                            "https://id.gs1.de/01/04012345999990/21/XYZ-1234"
-                        ],
-                        "action": "OBSERVE",
-                        "bizStep": "repairing",
-                        "disposition": "conformant",
-                        "readPoint": {
-                            "id": "https://id.gs1.de/414/4012345000115"
-                        }
-                    }
-                ]
-            }
-        }
-    },
-    "proof": {
-        "type": "Ed25519Signature2020",
-        "created": "2023-02-07T14:20:02Z",
-        "proofPurpose": "assertionMethod",
-        "verificationMethod": "did:web:ssi.eecc.de#z6MkoHWsmSZnHisAxnVdokYHnXaVqWFZ4H33FnNg13zyymxd",
-        "proofValue": "z4Myc3xNYqGVJ3ZqeZGLHTNTfirkLFGAVk6eqDTRN4pfjhtxrytYKbnvXa4K1r3pfGKFi33YqnSDgWLMksASgmeMX"
-    }
-}
-```
-
-**2. Option**  
+**Options**  
 
   
 **a\)**  verifiableCredential.credentialSubject is a EpcisDocument  
