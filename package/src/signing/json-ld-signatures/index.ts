@@ -2,6 +2,8 @@
 import { issue } from '@digitalbazaar/vc';
 // @ts-ignore
 import { Ed25519Signature2020 } from '@digitalbazaar/ed25519-signature-2020';
+// @ts-ignore
+import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-key-2020';
 
 import { documentLoader } from './documentLoader';
 
@@ -46,9 +48,9 @@ function getSuite(keyPair: any) {
 
 }
 
-export async function signJSONLD(issuer: string, subject: EPCISDocument | EPCISEvent, keyPair: any): Promise<VerifiableCredential> {
+export async function signJSONLD(subject: EPCISDocument | EPCISEvent, keyPair: Ed25519VerificationKey2020): Promise<VerifiableCredential> {
 
-    const credential = createEPCISCredential(issuer, subject, 'https://test.com/vc/1');
+    const credential = createEPCISCredential(keyPair.controller, subject, 'https://test.com/vc/1');
 
     const suite = getSuite(keyPair);
 

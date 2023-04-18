@@ -1,8 +1,10 @@
 import { EPCISDocument, EPCISEvent } from "../types";
 import { signJSONLD } from "./json-ld-signatures/index";
+// @ts-ignore
+import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-key-2020';
 
-export async function signEPCIS(issuer: string, subject: EPCISDocument | EPCISEvent, keyPair: any) {
+export async function signEPCIS(subject: EPCISDocument | EPCISEvent, keyPair: Ed25519VerificationKey2020) {
 
-    return signJSONLD(issuer, subject, keyPair);
+    return signJSONLD(subject, keyPair);
 
 }

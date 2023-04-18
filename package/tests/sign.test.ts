@@ -1,6 +1,6 @@
 
 import { eventDocument, signedEventDocument } from './events/document';
-import chai, { assert } from "chai";
+import chai, { expect } from "chai";
 chai.should();
 
 import { sign } from '../src/index';
@@ -10,18 +10,34 @@ import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-
 
 const TEST_SEED = 'testseedtestseedtestseedtestseed'
 
-async function getKeyPair() {
-    return await Ed25519VerificationKey2020.generate({
+async function getKeyPair(): Promise<Ed25519VerificationKey2020> {
+
+    // generate the keyPair from seed
+    let keyPair = await Ed25519VerificationKey2020.generate({
         seed: Uint8Array.from(Buffer.from(TEST_SEED))
     });
+
+    // name the keyPair in order to make it resolvable
+    keyPair.id = 'did:key:' + keyPair.publicKeyMultibase + '#' + keyPair.publicKeyMultibase;
+    keyPair.controller = 'did:key:' + keyPair.publicKeyMultibase;
+
+    return keyPair;
+
 }
 
-describe("Sign Test", () => {
-    it("Should sign the EPCIS Doc/Event", async () => {
+describe("Signing Test", () => {
+    it("Sign EPCIS Document", async () => {
+
+        // get seeded keyPair
         const keyPair = await getKeyPair();
-        const signedCredential = await sign('did:key:' + keyPair.publicKeyMultibase, eventDocument, keyPair);
-        console.log(signedCredential)
-        assert.equal('test', 'test');
+
+        // sign the test document with the seeded key
+        const signedCredential = await sign(eventDocument, keyPair);
+
+        expect(signedCredential).to.have.property('proof');
+        expect(signedCredential).to.have.property('credentialSubject')
+            .which.has.property('type')
+            .which.equal('EPCISDocument');
     });
 });
 

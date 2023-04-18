@@ -12,7 +12,7 @@ export const eventDocument: EPCISDocument = {
     "eventList": [
       {
         "type": "ObjectEvent",
-        "id": 'testid',
+        "id": 'https://testid.com',
         "eventTime": "2023-02-07T11:04:03.15Z",
         "eventTimeZoneOffset": "+01:00",
         "epcList": [
@@ -58,7 +58,7 @@ export const signedEventDocument: VerifiableCredential = {
       "eventList": [
         {
           "type": "ObjectEvent",
-          "id": 'testid',
+          "id": 'https://testid.com',
           "eventTime": "2023-02-07T11:04:03.15Z",
           "eventTimeZoneOffset": "+01:00",
           "epcList": [

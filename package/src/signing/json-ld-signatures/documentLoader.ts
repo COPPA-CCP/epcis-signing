@@ -1,5 +1,7 @@
 // @ts-ignore
 import jsonldSignatures from 'jsonld-signatures';
+// @ts-ignore
+import { defaultDocumentLoader } from '@digitalbazaar/vc';
 
 import { contexts } from './contexts/index';
 
@@ -8,12 +10,14 @@ export const documentLoader: Promise<any> = jsonldSignatures.extendContextLoader
 
     const document = contexts.get(url);
 
-    if (!document) throw new Error(`Document loader unable to load URL "${url}".`);
+    if (document) {
+        return {
+            contextUrl: null,
+            documentUrl: url,
+            document: document,
+        };
+    }
 
-    return {
-        contextUrl: null,
-        documentUrl: url,
-        document: document,
-    };
+    return defaultDocumentLoader(url);
 
 });
