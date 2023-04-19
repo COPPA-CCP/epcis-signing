@@ -1,10 +1,11 @@
 
 import { epcisDocument } from './events/document';
 import { epcisEvent } from './events/event';
-import chai, { expect } from "chai";
+import chai, { expect } from 'chai';
+import fetch from 'node-fetch';
 chai.should();
 
-import { sign } from '../src/index';
+import { VerifiableCredential, sign } from '../src/index';
 
 // @ts-ignore
 import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-key-2020';
@@ -12,6 +13,10 @@ import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-
 const TEST_SEED = 'testseedtestseedtestseedtestseed'
 
 const CREDENTIAL_ID = 'https://coppa.org/registry/vc/12345'
+
+let signedDocument: VerifiableCredential;
+
+let signedEvent: VerifiableCredential;
 
 async function getKeyPair(): Promise<Ed25519VerificationKey2020> {
 
@@ -28,6 +33,23 @@ async function getKeyPair(): Promise<Ed25519VerificationKey2020> {
 
 }
 
+async function verifyCredential(credential: VerifiableCredential): Promise<boolean> {
+
+    const response = await fetch('https://ssi.eecc.de/api/verifier', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify([credential])
+    });
+
+    const result: any = await response.json();
+
+    return result[0].verified;
+
+}
+
 describe("Signing Test", () => {
 
     it("Sign EPCIS Document", async () => {
@@ -36,7 +58,7 @@ describe("Signing Test", () => {
         const keyPair = await getKeyPair();
 
         // sign the test document with the seeded key
-        const signedDocument = await sign(epcisDocument, keyPair, CREDENTIAL_ID);
+        signedDocument = await sign(epcisDocument, keyPair, CREDENTIAL_ID);
 
         expect(signedDocument).to.have.property('proof')
             .which.has.property('proofValue');
@@ -46,19 +68,35 @@ describe("Signing Test", () => {
 
     });
 
+    it("Verify signed EPCIS Document", async () => {
+
+        const result = await verifyCredential(signedDocument);
+
+        expect(result).to.be.true;
+
+    });
+
     it("Sign EPCIS Event", async () => {
 
         // get seeded keyPair
         const keyPair = await getKeyPair();
 
         // sign the test document with the seeded key
-        const signedEvent = await sign(epcisEvent, keyPair, CREDENTIAL_ID);
+        signedEvent = await sign(epcisEvent, keyPair, CREDENTIAL_ID);
 
         expect(signedEvent).to.have.property('proof')
             .which.has.property('proofValue');
         expect(signedEvent).to.have.property('credentialSubject')
             .which.has.property('type')
             .which.equal('ObjectEvent');
+
+    });
+
+    it("Verify signed EPCIS Event", async () => {
+
+        const result = await verifyCredential(signedEvent);
+
+        expect(result).to.be.true;
 
     });
 
