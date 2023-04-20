@@ -1,6 +1,6 @@
-import { epcisContext } from "./epcis-context";
-import { ed25519Context } from "./ed25519-2020";
-import { signerDIDDoc } from "./signerDID";
+import { epcisContext } from "./epcis-context.js";
+import { ed25519Context } from "./ed25519-2020.js";
+import { signerDIDDoc } from "./signerDID.js";
 
 const contexts = new Map();
 

@@ -7,7 +7,7 @@ import {
 // @ts-ignore
 import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-key-2020';
 
-import { signEPCIS } from './signing/index';
+import { signEPCIS } from './signing/index.js';
 
 /**
  * Signes a passed EPICS object with the passed key pair and returns the signed verifiable credential which contains the signed EPCIS object.

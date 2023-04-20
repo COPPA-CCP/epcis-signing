@@ -5,9 +5,9 @@ import { Ed25519Signature2020 } from '@digitalbazaar/ed25519-signature-2020';
 // @ts-ignore
 import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-key-2020';
 
-import { documentLoader } from './documentLoader';
+import { documentLoader } from './documentLoader.js';
 
-import { isURL } from '../../utils/index';
+import { isURL } from '../../utils/index.js';
 
 import {
     EPCISDocument,

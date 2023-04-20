@@ -3,7 +3,7 @@ import jsonldSignatures from 'jsonld-signatures';
 // @ts-ignore
 import { defaultDocumentLoader } from '@digitalbazaar/vc';
 
-import { contexts } from './contexts/index';
+import { contexts } from './contexts/index.js';
 
 
 export const documentLoader: Promise<any> = jsonldSignatures.extendContextLoader(async (url: string) => {
