@@ -1,6 +1,6 @@
 {
   "name": "epcis-signing",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Signing of EPCIS events in form of verifiable credentials for tracability and immutability",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
