@@ -32,8 +32,7 @@ function createEPCISCredential(issuer: string, subject: EPCISDocument | EPCISEve
 
     return {
         '@context': [
-            'https://www.w3.org/2018/credentials/v1',
-            'https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld'
+            'https://www.w3.org/2018/credentials/v1'
         ],
         type: ['VerifiableCredential'],
         id: credentialId,
