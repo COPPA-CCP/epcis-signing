@@ -214,7 +214,7 @@ async function getKeyPair(): Promise<Ed25519VerificationKey2020> {
 
 async function signEvent(): Promise<VerifiableCredential> {
 
-    const keyPair: Ed25519VerificationKey2020 = getKeyPair();
+    const keyPair: Ed25519VerificationKey2020 = await getKeyPair();
 
     return await sign(epcisEvent, keyPair, 'https://test.com/vc/12345')
 
