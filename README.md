@@ -10,7 +10,7 @@ Signing of EPCIS event for tracability and immutability within in COPPA and beyo
 ## General Idea
 
 Signing data on the EPCIS level allows trusted and collaborative data exchange among arbitrary parties. This becomes particulary important when use case crucial data needs to be shared over many participants, e.g. in case of a circular economy, where every stakeholder is dependent on a trustable data flow from its predecessor.  
-In order to alow this in a secure and trustful manner, we aim to leverage the self-sovereign identity ecosystem as a public key infrastructure and the adjacent [verifiable credentials](https://ec.europa.eu/digital-building-blocks/wikis/display/EBSI/EBSI+Verifiable+Credentials) for signing data.
+In order to alow this in a secure and trustful manner, we aim to leverage the self-sovereign identity ecosystem as a public key infrastructure and the adjacent [verifiable credentials](https://ec.europa.eu/digital-building-blocks/wikis/display/EBSI/EBSI+Verifiable+Credentials) for signing data. For more information read the [motivational article](./docs/motivation.md) on this topic.
 
 ### Advantages
 
