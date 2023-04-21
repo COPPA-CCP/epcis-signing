@@ -170,3 +170,59 @@ This data model is based upon the [W3C VC Data Model](https://www.w3.org/TR/vc-d
 
 tbd.
 
+
+## Examples
+
+### Sign EPCIS Event
+
+```ts
+import { EPCISEvent, VerifiableCredential, sign } from 'epcis-signing';
+// @ts-ignore
+import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-key-2020';
+
+const epcisEvent: EPCISEvent = {
+    "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"
+    ],
+    "type": "ObjectEvent",
+    "id": 'https://testid.com/epcis/event/12345',
+    "eventTime": "2023-02-07T11:04:03.15Z",
+    "eventTimeZoneOffset": "+01:00",
+    "epcList": [
+        "https://id.eecc.de/01/04012345999990/21/XYZ-1234"
+    ],
+    "action": "OBSERVE",
+    "bizStep": "repairing",
+    "disposition": "conformant",
+    "readPoint": {
+        "id": "https://id.eecc.de/414/4012345000115"
+    }
+}
+
+async function getKeyPair(): Promise<Ed25519VerificationKey2020> {
+
+    // generate the keyPair from seed
+    let keyPair = await Ed25519VerificationKey2020.generate();
+
+    // name the keyPair in order to make it resolvable
+    keyPair.id = 'did:key:' + keyPair.publicKeyMultibase + '#' + keyPair.publicKeyMultibase;
+    keyPair.controller = 'did:key:' + keyPair.publicKeyMultibase;
+
+    return keyPair;
+
+}
+
+async function signEvent(): Promise<VerifiableCredential> {
+
+    const keyPair: Ed25519VerificationKey2020 = getKeyPair();
+
+    return await sign(epcisEvent, keyPair, 'https://test.com/vc/12345')
+
+}
+
+signEvent()
+    .then((signedCred: VerifiableCredential) => {
+        console.log(signedCred)
+    });
+```
+
