@@ -29,7 +29,14 @@
     "ssi",
     "credential"
   ],
-  "author": "Christian Fries (EECC)",
+  "author": {
+    "name": "European EPC Competence Center GmbH",
+    "email": "info@eecc.info",
+    "url": "https://id.eecc.de/"
+  },
+  "contributors": [
+    "Christian Fries <christian.fries@eecc.de>"
+  ],
   "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/COPPA-CCP/epcis-signing/issues"
