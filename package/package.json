@@ -15,7 +15,7 @@
     "build:esm": "tsc -p config/tsconfig.esm.json",
     "build:types": "tsc -p config/tsconfig.types.json",
     "test": "cross-env TS_NODE_PROJECT=\"config/tsconfig.test.json\" mocha",
-    "prepare": "npm run build"
+    "prepare": "cp ./../README.md ./ && npm run build"
   },
   "files": [
     "lib"

@@ -54,8 +54,8 @@ This data model is based upon the [W3C VC Data Model](https://www.w3.org/TR/vc-d
 **Options**  
 
   
-**a\)**  verifiableCredential.credentialSubject is a EpcisDocument  
- - credentialSubject.id = EpcisDocument.id
+**a\)**  verifiableCredential.credentialSubject is a EPCISDocument  
+ - credentialSubject.id = EPCISDocument.id
 
 
 ```json
@@ -114,11 +114,8 @@ This data model is based upon the [W3C VC Data Model](https://www.w3.org/TR/vc-d
 }
 ```
 
-**b\)** verifiableCredential.credentialSubjcet is a EpcisEVENT
-  - credentialSubjcet.id = EpcisEvent.id
-  - Advantage: event id suits very well as a subject
-  - Disadvantage: EPCIS Events are usually wrapped in an EPCIS Document container and do not get send raw
-      - to be clarified
+**b\)** verifiableCredential.credentialSubjcet is a EPCISEvent
+  - credentialSubjcet.id = EPCISEvent.id
 
 ```json
 {
