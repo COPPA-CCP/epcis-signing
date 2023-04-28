@@ -2,16 +2,13 @@
   "name": "epcis-signing",
   "version": "1.0.3",
   "description": "Signing of EPCIS events in form of verifiable credentials for tracability and immutability",
-  "exports": {
-    "import": "./lib/esm/index.js",
-    "require": "./lib/cjs/index.js"
-  },
-  "types": "lib/types/index.d.ts",
+  "main": "./lib/index.js",
+  "exports": "./lib/index.js",
+  "types": "lib/@types/index.d.ts",
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
-    "build:cjs": "tsc -p config/tsconfig.cjs.json",
+    "build": "npm run build:esm && npm run build:types",
     "build:esm": "tsc -p config/tsconfig.esm.json",
     "build:types": "tsc -p config/tsconfig.types.json",
     "test": "cross-env TS_NODE_PROJECT=\"config/tsconfig.test.json\" mocha",
