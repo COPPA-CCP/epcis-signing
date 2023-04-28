@@ -172,6 +172,14 @@ tbd.
 
 ### Sign EPCIS Event
 
+Install the npm package
+
+```
+npm i epcis-signing
+```
+
+Generate a kay pair and sign a demo event
+
 ```ts
 import { EPCISEvent, VerifiableCredential, sign } from 'epcis-signing';
 // @ts-ignore
