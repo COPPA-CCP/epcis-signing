@@ -1,6 +1,6 @@
-import { EPCISEvent } from "../../src/index"
+import { ObjectEvent } from "../../src/index"
 
-export const epcisEvent: EPCISEvent = {
+export const epcisEvent: ObjectEvent = {
     "@context": [
         "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"
     ],
