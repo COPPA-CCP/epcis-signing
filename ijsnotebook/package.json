@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "epcis-signing": "^1.0.4",
+    "esm-hook": "^0.1.4"
+  }
+}
