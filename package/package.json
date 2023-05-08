@@ -35,7 +35,7 @@
   "contributors": [
     "Christian Fries <christian.fries@eecc.de>"
   ],
-  "license": "AGPL-3.0",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/COPPA-CCP/epcis-signing/issues"
   },
