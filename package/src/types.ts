@@ -127,8 +127,50 @@ export type Source = {
 }
 
 export type SensorElement = {
-    sensorReport: any;
-    sensorMetadata?: any;
+    sensorReport: SensorReport;
+    sensorMetadata?: SensorMetadata;
+}
+
+export type SensorReport = {
+    // required props
+    type: string;
+
+    // optional props
+    bizRules?: string | URL;
+    booleanValue?: boolean;
+    chemicalSubstance?: string | URL;
+    component?: string;
+    coordinateReferenceSystem?: string | URL;
+    dataProcessingMethod?: string | URL;
+    deviceID?: string | URL;
+    deviceMetadata?: string | URL;
+    exception?: string;
+    hexBinaryValue?: string;
+    maxValue?: number;
+    meanValue?: number;
+    microorganism?: string | URL;
+    minValue?: number;
+    percRank?: number;
+    percValue?: number;
+    rawData?: string | URL;
+    sDev?: number;
+    stringValue?: string
+    time?: string;
+    uom?: string;
+    uriValue?: string | URL;
+    value?: number;
+}
+
+export type SensorMetadata = {
+    // optional props
+    bizRules?: string | URL;
+    dataProcessingMethod?: string | URL;
+    deviceID?: string | URL;
+    deviceMetadata?: string | URL;
+    endTime?: string;
+    rawData?: string | URL;
+    startTime?: string;
+    time?: string;
 }
 
 /**
