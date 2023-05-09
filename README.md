@@ -10,13 +10,13 @@ Signing of EPCIS event for tracability and immutability within in COPPA and beyo
 ## General Idea
 
 Signing data on the EPCIS level allows trusted and collaborative data exchange among arbitrary parties. This becomes particulary important when use case crucial data needs to be shared over many participants, e.g. in case of a circular economy, where every stakeholder is dependent on a trustable data flow from its predecessor.  
-In order to alow this in a secure and trustful manner, we aim to leverage the self-sovereign identity ecosystem as a public key infrastructure and the adjacent [verifiable credentials](https://ec.europa.eu/digital-building-blocks/wikis/display/EBSI/EBSI+Verifiable+Credentials) for signing data. For more information read the [motivational article](./docs/motivation.md) on this topic.
+In order to allow this in a secure and trustful manner, we aim to leverage the self-sovereign identity ecosystem as a public key infrastructure and the adjacent [verifiable credentials](https://ec.europa.eu/digital-building-blocks/wikis/display/EBSI/EBSI+Verifiable+Credentials) for signing data. For more information read the [motivational article](./docs/motivation.md) on this topic.
 
 ### Advantages
 
  - **Immutability** - allows trustless data exchange over an arbitrary amount of stakeholders
   
- - **Tracability** - each information can be tracked back to its producer and makes it authentic
+ - **Traceability** - each information can be tracked back to its producer and makes it authentic
 
  - **Trust** - identifying each stakeholder and its adjacent data and thereby forms he foundation for an independent trust framework
 
@@ -35,7 +35,7 @@ sensitive supply chain traceability data](https://arxiv.org/pdf/2204.00317.pdf)
 
 ### Selective Disclosure
 
-Allowing data to flow between arbitrary parties wilkl result in the need disclose only the necessary bits of information within the data to others which is needed. Therefore a a selective disclosure mechanism within the signing process should be envisioned from the start.
+Allowing data to flow between arbitrary parties will result in the need disclose only the necessary bits of information within the data to others which is needed. Therefore a a selective disclosure mechanism within the signing process should be envisioned from the start.
 
 **Ideas**
 
