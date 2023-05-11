@@ -18,7 +18,7 @@ In order to allow this in a secure and trustful manner, we aim to leverage the s
   
  - **Traceability** - each information can be tracked back to its producer and makes it authentic
 
- - **Trust** - identifying each stakeholder and its adjacent data and thereby forms he foundation for an independent trust framework
+ - **Trust** - identifying each stakeholder and its adjacent data and thereby forms the foundation for an independent trust framework
 
 &#8594; Basis for collaborative data platforms
 
