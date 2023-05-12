@@ -35,7 +35,6 @@ export type EPCISEvent = {
     // required props
     eventTime: string;
     eventTimeZoneOffset: string;
-    //eventID: string;
     // should match eventID
     id: string;
     type: string;
@@ -46,12 +45,13 @@ export type EPCISEvent = {
     bizStep?: string;
     bizLocation?: BizLocation;
     bizTransactionList?: [BizTransaction];
+    certificationInfo?: any;
     childEPCs?: [string | URL];
     childQuantityList?: [QuantityElement];
     destinationList?: [Destination];
     disposition?: string;
-    certificationInfo?: any;
     epcList?: [string];
+    eventID?: string;
     errorDeclaration?: any;
     parentID?: string | URL;
     quantityList?: [QuantityElement];
