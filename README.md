@@ -231,3 +231,7 @@ signEvent()
     });
 ```
 
+### Verify Signed Events
+
+For verifiaction of EPCIS credentials you can use the EECC VC Verifier as a [Web App](https://ssi.eecc.de/verifier/) or [API](https://ssi.eecc.de/api/verifier/swagger/).
+
