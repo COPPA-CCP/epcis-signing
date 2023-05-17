@@ -1,4 +1,5 @@
 [![Tests](https://github.com/COPPA-CCP/epcis-signing/actions/workflows/npm-test.yml/badge.svg)](https://github.com/COPPA-CCP/epcis-signing/actions)
+[![npm](https://img.shields.io/npm/v/epcis-signing)](https://npm.im/epcis-signing)
 
 
 ![Header Image](docs/assets/img/epcis-sign.png)
