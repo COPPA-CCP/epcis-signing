@@ -40,6 +40,7 @@ Allowing data to flow between arbitrary parties will result in the need disclose
 
 **Ideas**
 
+ - [Data Integrity Proof](https://w3c.github.io/vc-data-integrity/)
  - [Merkle tree](https://github.com/Echsecutor/NITree)
  - [SD_JWT](https://datatracker.ietf.org/meeting/114/materials/slides-114-oauth-sd-jwt-selective-disclosure-for-jwt-ietf-114-oauth-sd-jwt-00.pdf)
 
