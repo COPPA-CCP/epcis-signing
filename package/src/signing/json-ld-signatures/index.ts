@@ -32,9 +32,10 @@ function createEPCISCredential(issuer: string, subject: EPCISDocument | EPCISEve
 
     return {
         '@context': [
-            'https://www.w3.org/2018/credentials/v1'
+            'https://www.w3.org/2018/credentials/v1',
+            'https://ssi.eecc.de/api/registry/context/epciscredentials'
         ],
-        type: ['VerifiableCredential'],
+        type: ['VerifiableCredential', subject.type == 'EPCISDocument' ? 'EPCISDocumentCredential' : 'EPCISEventCredential'],
         id: credentialId,
         issuer: issuer,
         issuanceDate: w3cDate(),

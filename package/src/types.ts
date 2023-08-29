@@ -11,7 +11,7 @@
 export type EPCISDocument = {
 
     // required props
-    '@context': [string],
+    '@context': string[],
     creationDate: string;
     epcisBody: EPCISBody;
     id: string;
@@ -27,7 +27,7 @@ export type EPCISDocument = {
 
 export type EPCISBody = {
     // required props
-    eventList: [EPCISEvent];
+    eventList: EPCISEvent[];
 }
 
 export type EPCISEvent = {
@@ -40,24 +40,24 @@ export type EPCISEvent = {
     type: string;
 
     // optional props
-    '@context'?: [string];
+    '@context'?: string[];
     action?: string;
     bizStep?: string;
     bizLocation?: BizLocation;
-    bizTransactionList?: [BizTransaction];
+    bizTransactionList?: BizTransaction[];
     certificationInfo?: any;
-    childEPCs?: [string | URL];
-    childQuantityList?: [QuantityElement];
-    destinationList?: [Destination];
+    childEPCs?: string | URL[];
+    childQuantityList?: QuantityElement[];
+    destinationList?: Destination[];
     disposition?: string;
-    epcList?: [string];
+    epcList?: string[];
     eventID?: string;
     errorDeclaration?: any;
     parentID?: string | URL;
-    quantityList?: [QuantityElement];
+    quantityList?: QuantityElement[];
     readPoint?: ReadPoint;
-    sensorElementList?: [SensorElement];
-    sourceList?: [Source];
+    sensorElementList?: SensorElement[];
+    sourceList?: Source[];
 
 
     // allow any field for now
@@ -188,9 +188,9 @@ export type Proof = {
 }
 
 export type Verifiable = {
-    '@context': [string | any];
-    type: [string];
-    proof?: Proof | [Proof];
+    '@context': string | any[];
+    type: string[];
+    proof?: Proof | Proof[];
 }
 
 
