@@ -56,7 +56,10 @@ This data model is based upon the [W3C VC Data Model](https://www.w3.org/TR/vc-d
 **Options**  
 
   
-**a\)**  verifiableCredential.credentialSubject is a EPCISDocument  
+#### EPCISDocumentCredential
+
+verifiableCredential.credentialSubject is a EPCISDocument  
+
  - credentialSubject.id = EPCISDocument.id
 
 
@@ -116,7 +119,10 @@ This data model is based upon the [W3C VC Data Model](https://www.w3.org/TR/vc-d
 }
 ```
 
-**b\)** verifiableCredential.credentialSubjcet is a EPCISEvent
+#### EPCISEventCredential
+
+verifiableCredential.credentialSubjcet is a EPCISEvent
+
   - credentialSubjcet.id = EPCISEvent.id
 
 ```json
