@@ -67,7 +67,7 @@ verifiableCredential.credentialSubject is a EPCISDocument
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://ssi.eecc.de/api/registry/context",
+    "https://ssi.eecc.de/api/registry/context/epciscredentials",
     "https://w3id.org/security/suites/ed25519-2020/v1"
   ],
   "id": "https://ssi.eecc.de/api/registry/vc/f2c39be7-2bbf-4a97-a3af-b6d5a2a74909",
@@ -130,7 +130,7 @@ verifiableCredential.credentialSubjcet is a EPCISEvent
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://ssi.eecc.de/api/registry/context",
+    "https://ssi.eecc.de/api/registry/context/epciscredentials",
     "https://w3id.org/security/suites/ed25519-2020/v1"
   ],
   "id": "https://ssi.eecc.de/api/registry/vc/1f8ffded-3a7a-41db-86ea-225949a25023",
