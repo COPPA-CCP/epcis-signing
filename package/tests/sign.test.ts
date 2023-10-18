@@ -18,6 +18,8 @@ let signedDocument: VerifiableCredential;
 
 let signedEvent: VerifiableCredential;
 
+let signedNoIdEvent: VerifiableCredential;
+
 async function getKeyPair(): Promise<Ed25519VerificationKey2020> {
 
     // generate the keyPair from seed
@@ -105,6 +107,20 @@ describe("Signing Test", () => {
         } catch (error: any) {
             expect(error).to.be.an('error').with.property('message', 'Credential id must be an URL');
         }
+
+    });
+
+    it("Pass no credential id", async () => {
+
+        signedNoIdEvent = await sign(epcisEvent, keyPair);
+
+    });
+
+    it("Verify signed no id EPCIS Event", async () => {
+
+        const result = await verifyCredential(signedNoIdEvent);
+
+        expect(result).to.be.true;
 
     });
 

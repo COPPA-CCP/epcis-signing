@@ -26,9 +26,9 @@ export function w3cDate(): string {
     return dateStr.substr(0, dateStr.length - 5) + 'Z';
 };
 
-function createEPCISCredential(issuer: string, subject: EPCISDocument | EPCISEvent, credentialId: string): VerifiableCredential {
+function createEPCISCredential(issuer: string, subject: EPCISDocument | EPCISEvent, credentialId?: string): VerifiableCredential {
 
-    if (!isURL(credentialId)) throw new Error('Credential id must be an URL');
+    if (credentialId && !isURL(credentialId)) throw new Error('Credential id must be an URL');
 
     return {
         '@context': [
@@ -36,7 +36,7 @@ function createEPCISCredential(issuer: string, subject: EPCISDocument | EPCISEve
             'https://ssi.eecc.de/api/registry/context/epciscredentials'
         ],
         type: ['VerifiableCredential', subject.type == 'EPCISDocument' ? 'EPCISDocumentCredential' : 'EPCISEventCredential'],
-        id: credentialId,
+        ...(credentialId && { id: credentialId }),
         issuer: issuer,
         issuanceDate: w3cDate(),
         credentialSubject: subject
@@ -56,8 +56,6 @@ export async function signJSONLD(subject: EPCISDocument | EPCISEvent, keyPair: E
 
     // make LD specific checks
 
-    // use document or event id as credential id if none is given
-    if (!credentialId) credentialId = subject.id;
 
     const credential = createEPCISCredential(keyPair.controller, subject, credentialId);
 

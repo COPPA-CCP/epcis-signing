@@ -195,7 +195,7 @@ export type Verifiable = {
 
 
 export type VerifiableCredential = Verifiable & {
-    id: string | URL;
+    id?: string | URL;
     issuer: string | any;
     issuanceDate: string;
     credentialSubject: EPCISDocument | EPCISEvent;
