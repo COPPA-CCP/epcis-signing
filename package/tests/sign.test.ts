@@ -1,4 +1,3 @@
-
 import { epcisDocument } from './events/document';
 import { epcisEvent } from './events/event';
 import chai, { expect } from 'chai';
@@ -35,9 +34,6 @@ async function getKeyPair(): Promise<Ed25519VerificationKey2020> {
 
 }
 
-// get seeded keyPair
-const keyPair = await getKeyPair();
-
 async function verifyCredential(credential: VerifiableCredential): Promise<boolean> {
 
     const response = await fetch('https://ssi.eecc.de/api/verifier', {
@@ -55,7 +51,14 @@ async function verifyCredential(credential: VerifiableCredential): Promise<boole
 
 }
 
+let keyPair;
+
 describe("Signing Test", () => {
+
+    before(async () => {
+        keyPair = await getKeyPair();
+    })
+    // get seeded keyPair
 
     it("Sign EPCIS Document", async () => {
 

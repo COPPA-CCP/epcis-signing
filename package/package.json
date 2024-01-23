@@ -1,5 +1,5 @@
 {
-  "name": "epcis-signing",
+  "name": "epcis-signing-test",
   "version": "1.1.1",
   "description": "Signing of EPCIS events in form of verifiable credentials for tracability and immutability",
   "main": "dist/cjs/index.js",
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "rm -fr dist/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && ./fixup",
-    "test": "cross-env TS_NODE_PROJECT=\"config/tsconfig.test.json\" mocha",
+    "test": "cross-env TS_NODE_PROJECT=\"tsconfig-test.json\" mocha",
     "prepare": "cp ./../README.md ./ && npm run build"
   },
   "files": [
@@ -46,6 +46,7 @@
   "devDependencies": {
     "@types/chai": "^4.3.4",
     "@types/mocha": "^10.0.1",
+    "@types/node": "latest",
     "@types/sinon": "^10.0.14",
     "chai": "^4.3.7",
     "cross-env": "^7.0.3",
