@@ -5,7 +5,7 @@ import chai, { expect } from 'chai';
 import fetch from 'node-fetch';
 chai.should();
 
-import { EPCISDocument, VerifiableCredential, sign } from '../src/index';
+import { EPCISDocument, VerifiableCredential, sign, unwrapEpcisFromCredential, wrapEpcisInCredential } from '../src/index';
 
 // @ts-ignore
 import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-key-2020';
@@ -81,7 +81,7 @@ describe("Signing Test", () => {
     it("Sign EPCIS Event", async () => {
 
         // sign the test document with the seeded key
-        signedEvent = await sign(epcisEvent, keyPair, CREDENTIAL_ID);
+        signedEvent = await sign({...epcisEvent}, keyPair, CREDENTIAL_ID);
 
         expect(signedEvent).to.have.property('proof')
             .which.has.property('proofValue');
@@ -103,7 +103,7 @@ describe("Signing Test", () => {
 
         // check for error
         try {
-            await sign(epcisEvent, keyPair, '12345');
+            await sign({...epcisEvent}, keyPair, '12345');
         } catch (error: any) {
             expect(error).to.be.an('error').with.property('message', 'Credential id must be an URL');
         }
@@ -112,7 +112,7 @@ describe("Signing Test", () => {
 
     it("Pass no credential id", async () => {
 
-        signedNoIdEvent = await sign(epcisEvent, keyPair);
+        signedNoIdEvent = await sign({...epcisEvent}, keyPair);
 
     });
 
@@ -169,6 +169,30 @@ describe("Signing Test", () => {
         expect(signedEvent).to.have.property('credentialSubject')
             .which.has.property('id')
             .which.equal(epcisEvent.id);
+
+    });
+
+    // wrapping unwrapping tests
+
+    it("Wrap epcis", async () => {
+
+        const wrappedEvent = wrapEpcisInCredential('did:web:ssi.eecc.de', {...epcisEvent});
+        const wrappedDocument = wrapEpcisInCredential('did:web:ssi.eecc.de', {...epcisDocument});
+
+        expect(wrappedEvent).to.have.property('credentialSubject').which.has.property('id').which.equal(epcisEvent.eventID)
+        expect(wrappedEvent).to.have.property('credentialSubject').which.not.has.property('eventID')
+        expect(wrappedDocument).to.have.property('credentialSubject').which.has.property('id').which.equal(epcisDocument.id)
+
+    });
+
+    it("Unwrap signed credential", async () => {
+
+        const unwrappedEvent = unwrapEpcisFromCredential(signedEvent);
+        const unwrappedDocument = unwrapEpcisFromCredential(signedDocument);
+
+        expect(unwrappedEvent).to.have.property('eventID').which.equal(epcisEvent.eventID)
+        expect(unwrappedEvent).not.to.have.property('id')
+        expect(unwrappedDocument).to.have.property('id').which.equal(epcisDocument.id)
 
     });
 
