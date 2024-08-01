@@ -1,12 +1,10 @@
 import { EPCISDocument, EPCISEvent, VerifiableCredential } from "../types";
 import { isIRI } from "../utils/index.js";
-import { signJSONLD } from "./json-ld-signatures/index.js";
+import { signJSONLD, createEPCISCredential } from "./json-ld-signatures/index.js";
 // @ts-ignore
 import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-key-2020';
 
-
-export async function signEPCIS(subject: EPCISDocument | EPCISEvent, keyPair: Ed25519VerificationKey2020, credentialId?: string): Promise<VerifiableCredential> {
-
+function prepareECPIS(subject: EPCISDocument | EPCISEvent):  EPCISDocument | EPCISEvent {
     // make EPCIS specific checks before signing
     if (!subject.id && (!("eventID" in subject) || !subject.eventID)) throw new Error('The EPCIS subject must have an id field in order to be signable');
 
@@ -17,8 +15,16 @@ export async function signEPCIS(subject: EPCISDocument | EPCISEvent, keyPair: Ed
         delete subject.eventID;
     }
 
-    if (!isIRI(subject.id)) throw new Error('The EPCIS id field must contain an IRI');
+    return subject;
+}
 
-    return signJSONLD(subject, keyPair, credentialId);
 
+export async function signEPCIS(subject: EPCISDocument | EPCISEvent, keyPair: Ed25519VerificationKey2020, credentialId?: string): Promise<VerifiableCredential> {
+    
+    return signJSONLD(prepareECPIS(subject), keyPair, credentialId);
+
+}
+
+export function wrapEPCISInCredential(issuer: string, subject: EPCISDocument | EPCISEvent, credentialId?: string): VerifiableCredential {
+    return createEPCISCredential(issuer, prepareECPIS(subject), credentialId);
 }

@@ -4,8 +4,8 @@ export const epcisEvent: ObjectEvent = {
     "@context": [
         "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"
     ],
-    "id": "https://id.eecc.de/epcis/event/12345",
-    "eventID": "https://id.eecc.de/epcis/event/12345",
+    "id": "urn:uuid:12345",
+    "eventID": "urn:uuid:12345",
     "type": "ObjectEvent",
     "eventTime": "2023-02-07T11:04:03.15Z",
     "eventTimeZoneOffset": "+01:00",

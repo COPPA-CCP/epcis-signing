@@ -51,10 +51,14 @@ export type EPCISEvent = {
     destinationList?: Destination[];
     disposition?: string;
     epcList?: string[];
+    inputEpcList?: string[];
+    outputEpcList?: string[];
     eventID?: string;
     errorDeclaration?: any;
     parentID?: string | URL;
     quantityList?: QuantityElement[];
+    outputQuantityList?: QuantityElement[];
+    inputQuantityList?: QuantityElement[];
     readPoint?: ReadPoint;
     sensorElementList?: SensorElement[];
     sourceList?: Source[];

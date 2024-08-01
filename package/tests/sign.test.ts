@@ -138,7 +138,7 @@ describe("Signing Test", () => {
 
     });
 
-    it("Pass no IRI id in document", async () => {
+    /*it("Pass no IRI id in document", async () => {
 
         // remove id field
         let nonIRIDocument: EPCISDocument = { ...epcisDocument };
@@ -150,7 +150,7 @@ describe("Signing Test", () => {
             expect(error).to.be.an('error').with.property('message', 'The EPCIS id field must contain an IRI');
         }
 
-    });
+    });*/
 
     it("Pass eventID only", async () => {
 
