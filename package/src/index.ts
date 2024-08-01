@@ -29,7 +29,7 @@ export function wrapEpcisInCredential(
   return wrapEPCISInCredential(issuer, subject, credentialId);
 }
 
-export function unwrapEpcsFromCredential(
+export function unwrapEpcisFromCredential(
   credential: VerifiableCredential
 ): EPCISDocument | EPCISEvent {
   let epcisSubject = credential.credentialSubject;
