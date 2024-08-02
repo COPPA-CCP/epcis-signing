@@ -200,7 +200,7 @@ const epcisEvent: EPCISEvent = {
         "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"
     ],
     "type": "ObjectEvent",
-    "id": 'https://testid.com/epcis/event/12345',
+    "eventID": 'urn:uuid:12345',
     "eventTime": "2023-02-07T11:04:03.15Z",
     "eventTimeZoneOffset": "+01:00",
     "epcList": [
@@ -239,6 +239,35 @@ signEvent()
     .then((signedCred: VerifiableCredential) => {
         console.log(signedCred)
     });
+```
+
+### Wrap and Unwrap EPCIS Event in Credential
+
+```ts
+import { EPCISEvent, unwrapEpcisFromCredential, wrapEpcisInCredential } from 'epcis-signing';
+
+const epcisEvent: EPCISEvent = {
+    "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"
+    ],
+    "type": "ObjectEvent",
+    "eventID": 'urn:uuid:12345',
+    "eventTime": "2023-02-07T11:04:03.15Z",
+    "eventTimeZoneOffset": "+01:00",
+    "epcList": [
+        "https://id.eecc.de/01/04012345999990/21/XYZ-1234"
+    ],
+    "action": "OBSERVE",
+    "bizStep": "repairing",
+    "disposition": "conformant",
+    "readPoint": {
+        "id": "https://id.eecc.de/414/4012345000115"
+    }
+}
+
+
+const wrappedEvent = wrapEpcisInCredential('did:web:ssi.eecc.de', epcisEvent);
+const unwrappedEvent = unwrapEpcisFromCredential(wrappedEvent);
 ```
 
 ### Verify Signed Events
