@@ -122,9 +122,9 @@ verifiableCredential.credentialSubject is a EPCISDocument
 
 #### EPCISEventCredential
 
-verifiableCredential.credentialSubjcet is a EPCISEvent
+verifiableCredential.credentialSubject is a EPCISEvent
 
-  - credentialSubjcet.id = EPCISEvent.id
+  - credentialSubject.id = EPCISEvent.id
 
 ```json
 {
@@ -188,7 +188,7 @@ Install the npm package
 npm i epcis-signing
 ```
 
-Generate a kay pair and sign a demo event
+Generate a key pair and sign a demo event
 
 ```ts
 import { EPCISEvent, VerifiableCredential, sign } from 'epcis-signing';
