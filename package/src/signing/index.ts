@@ -1,5 +1,4 @@
 import { EPCISDocument, EPCISEvent, VerifiableCredential } from "../types";
-import { isIRI } from "../utils/index.js";
 import { signJSONLD, createEPCISCredential } from "./json-ld-signatures/index.js";
 // @ts-ignore
 import { Ed25519VerificationKey2020 } from '@digitalbazaar/ed25519-verification-key-2020';
