@@ -33,7 +33,7 @@ export function createEPCISCredential(issuer: string, subject: EPCISDocument | E
     return {
         '@context': [
             'https://www.w3.org/2018/credentials/v1',
-            'https://raw.githubusercontent.com/COPPA-CCP/epcis-signing/main/package/src/signing/json-ld-signatures/contexts/epcis-credentials-context.ts'
+            'https://raw.githubusercontent.com/COPPA-CCP/epcis-signing/main/package/src/signing/json-ld-signatures/contexts/epcis-credential-context.json'
         ],
         type: ['VerifiableCredential', subject.type == 'EPCISDocument' ? 'EPCISDocumentCredential' : 'EPCISEventCredential'],
         ...(credentialId && { id: credentialId }),
