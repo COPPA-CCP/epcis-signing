@@ -7,6 +7,8 @@ export const epcisCredentialContext =
         },
         "EPCISEventCredential": {
             "@id": "https://github.com/european-epc-competence-center/epcis-signing#epciseventcredential"
-        }
+        },
+        "name": "http://schema.org/name",
+        "image": "http://schema.org/image"
     }
 }
